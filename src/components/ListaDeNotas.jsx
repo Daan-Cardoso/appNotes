@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import CardNota from './CardNota.jsx'
-export default class ListaDeNotas extends Component {
+
+class ListaDeNotas extends Component {
   render() {
     return (
       <ul>
-        <li>
-          <CardNota />
-        </li>
+        {['trabalho', 'trabalho', 'estudo'].map((categoria, index) => (
+            <li key={index}>
+              <CardNota title={categoria} />
+            </li>
+          ))}
       </ul>
     )
   }
 }
+
+export default ListaDeNotas

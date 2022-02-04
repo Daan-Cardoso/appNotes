@@ -1,7 +1,7 @@
 import React from "react"
 import { Component } from "react/cjs/react.production.min";
 
-export class FormularioCadastro extends Component {
+class FormularioCadastro extends Component {
   render() {
     return (
       <form>
@@ -12,3 +12,5 @@ export class FormularioCadastro extends Component {
     )
   }
 }
+
+export default FormularioCadastro;
