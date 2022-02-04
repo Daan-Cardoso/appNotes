@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Nota from './Nota.jsx'
+import CardNota from './CardNota.jsx'
 export default class ListaDeNotas extends Component {
   render() {
     return (
       <ul>
         <li>
-          <Nota />
+          <CardNota />
         </li>
       </ul>
     )
