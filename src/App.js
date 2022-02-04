@@ -1,5 +1,5 @@
-import ListaDeNotas from './components/ListaDeNotas.jsx'
-import FormularioCadastro from './components/FormularioCadastro.jsx'
+import ListaDeNotas from './components/ListaDeNotas/'
+import FormularioCadastro from './components/FormularioCadastro/'
 import React, { Component } from 'react/cjs/react.development'
 
 class App extends Component {
