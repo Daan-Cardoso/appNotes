@@ -21,11 +21,18 @@ class App extends Component {
     this.setState(newState)
   }
 
+  _removeCard(index) {
+    const notes = this.state.notes
+    notes.splice(index,1)
+    
+    this.setState({notes})
+  }
+
   render() {
     return (
       <section className='conteudo'>
         <FormularioCadastro createCard={this._createCard.bind(this)} />
-        <ListaDeNotas cardNotes={this.state.notes} />
+        <ListaDeNotas removeCard={this._removeCard.bind(this)} cardNotes={this.state.notes} />
       </section>
     );
   }
