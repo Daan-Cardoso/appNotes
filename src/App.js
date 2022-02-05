@@ -14,10 +14,12 @@ class App extends Component {
       _categories: []
     }
   }
-  _createCard(title, text) {
-    const newNote = { title, text }
+  _createCard(title, text, category) {
+    const newNote = { title, text, category }
     const updateNotes = [...this.state._notes, newNote]
     const newState = {...this.state, _notes: updateNotes }
+
+    console.log(newNote)
   
     this.setState(newState)
   }
@@ -39,7 +41,11 @@ class App extends Component {
   render() {
     return (
       <section className='conteudo'>
-        <FormularioCadastro createCard={this._createCard.bind(this)} />
+        <FormularioCadastro
+          createCard={this._createCard.bind(this)}
+          categories={this.state._categories}
+        />
+
         <main className='conteudo-principal'>
           <ListaDeCategorias
             newCategory={this._newCategory.bind(this)}
