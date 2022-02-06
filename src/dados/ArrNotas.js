@@ -1,16 +1,28 @@
 export default class ArrNotas {
   constructor() {
-    this.notas = []
+    this.notes = []
+    this._inscritos = []
   }
   
   createCard(title, text, category) {
     const newNote =  new Nota(title, text, category)
-    this.notas.push(newNote)
-    console.log(this.notas)
+    this.notes.push(newNote)
+    this.notify()
   }
 
   removeCard(index) {
-    this.notas.splice(index,1)
+    this.notes.splice(index,1)
+    this.notify()
+  }
+
+  subscribe(func) {
+    this._inscritos.push(func)
+  }
+
+  notify() {
+    this._inscritos.forEach(func => {
+      func(this.notes)
+    })
   }
 }
 

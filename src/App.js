@@ -20,18 +20,18 @@ class App extends Component {
       <section className='conteudo'>
         <FormularioCadastro
           createCard={this.notes.createCard.bind(this.notes)}
-          categories={this.categories.categorias}
+          categories={this.categories}
         />
 
         <main className='conteudo-principal'>
           <ListaDeCategorias
             newCategory={this.categories.newCategory.bind(this.categories)}
-            categories={this.categories.categorias}
+            categories={this.categories}
           />
 
           <ListaDeNotas
             removeCard={this.notes.removeCard.bind(this.notes)}
-            cardNotes={this.notes.notas}
+            cardNotes={this.notes}
           />
         </main>
       </section>

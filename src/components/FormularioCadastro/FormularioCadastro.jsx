@@ -8,6 +8,17 @@ class FormularioCadastro extends Component {
     this._text = ''
     this._titulo = ''
     this._category = 'Sem Categoria'
+    this.state = {
+      categories: []
+    }
+  }
+
+  componentDidMount() {
+    this.props.categories.subscribe(this._createCard.bind(this))
+  }
+
+  _createCard(categories) {
+    this.setState({...this.state, categories})
   }
 
   _handleChangeTitle(e) {
@@ -25,10 +36,9 @@ class FormularioCadastro extends Component {
     this._category = targetValue
   }
 
-  _createCard(e) {
+  _handleSubmitForm(e) {
     e.preventDefault()
     e.stopPropagation()
-
     this.props.createCard(this._titulo, this._text, this._category)
   }
 
@@ -36,7 +46,7 @@ class FormularioCadastro extends Component {
     return (
       <form
         className="form-cadastro"
-        onSubmit={this._createCard.bind(this)}
+        onSubmit={this._handleSubmitForm.bind(this)}
       >
         <select
           onChange={this._handleSelectCategory.bind(this)}
@@ -44,7 +54,7 @@ class FormularioCadastro extends Component {
         >
           <option>Sem Categoria</option>
           {
-            this.props.categories.map((category, index) => (
+            this.state.categories.map((category, index) => (
               <option key={`${category + index}`}> {category} </option>
             ))
           }
