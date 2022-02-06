@@ -7,11 +7,14 @@ export default class Categorias {
   newCategory(newCategory) {
     this.categorias.push(newCategory)
     this.notify()
-    console.log(this.categorias)
   }
 
   subscribe(func) {
     this._inscritos.push(func)
+  }
+
+  unsubscribe(func) {
+    this._inscritos = this._inscritos.filter(f => f !== func)
   }
 
   notify() {

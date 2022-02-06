@@ -8,16 +8,22 @@ class FormularioCadastro extends Component {
     this._text = ''
     this._titulo = ''
     this._category = 'Sem Categoria'
+    this._newCategories = this._updateCategories.bind(this)
+
     this.state = {
       categories: []
     }
   }
 
   componentDidMount() {
-    this.props.categories.subscribe(this._createCard.bind(this))
+    this.props.categories.subscribe(this._newCategories)
   }
 
-  _createCard(categories) {
+  componentWillUnmount() {
+    this.props.categories.unsubscribe(this._newCategories)
+  }
+
+  _updateCategories(categories) {
     this.setState({...this.state, categories})
   }
 

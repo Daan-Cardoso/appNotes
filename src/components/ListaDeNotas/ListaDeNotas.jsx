@@ -6,16 +6,22 @@ class ListaDeNotas extends Component {
   constructor() {
     super()
 
+    this._newCards = this._updateCardNotes.bind(this)
+
     this.state = {
       notes: []
     }
   }
 
   componentDidMount() {
-    this.props.cardNotes.subscribe(this._newCardNotes.bind(this))
+    this.props.cardNotes.subscribe(this._newCards)
   }
 
-  _newCardNotes(notes) {
+  componentWillUnmount() {
+    this.props.cardNotes.unsubscribe(this._newCards)
+  }
+
+  _updateCardNotes(notes) {
     this.setState({...this.state, notes})
   }
 

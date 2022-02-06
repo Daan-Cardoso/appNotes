@@ -19,6 +19,10 @@ export default class ArrNotas {
     this._inscritos.push(func)
   }
 
+  unsubscribe(func) {
+    this._inscritos = this._inscritos.filter(f => f !== func)
+  }
+
   notify() {
     this._inscritos.forEach(func => {
       func(this.notes)
